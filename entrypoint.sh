@@ -63,7 +63,7 @@ if [[ $arch = "arm64" ]]; then
         ln -sf /usr/bin/arm-linux-gnueabi-gcc-"$ver_number" /usr/bin/arm-linux-gnueabi-gcc
 
         export CROSS_COMPILE="aarch64-linux-gnu-"
-        export CROSS_COMPILE_COMPAT="arm-linux-gnueabi-"
+        export CROSS_COMPILE_ARM32="arm-linux-gnueabi-"
     elif [[ $compiler = clang/* ]]; then
         ver="${compiler/clang\/}"
         ver_number="${ver/\/binutils}"
