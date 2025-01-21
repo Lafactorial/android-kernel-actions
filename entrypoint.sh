@@ -24,8 +24,9 @@ extract_tarball(){
 workdir="$GITHUB_WORKSPACE"
 arch="$1"
 compiler="$2"
-defconfig="$3"
-image="$4"
+defconfig_device="$3"
+defconfig="$4"
+image="$5"
 repo_name="${GITHUB_REPOSITORY/*\/}"
 zipper_path="${ZIPPER_PATH:-zipper}"
 kernel_path="${KERNEL_PATH:-.}"
@@ -202,7 +203,7 @@ date="$(date +%d%m%Y-%I%M)"
 tag=$(date +"%H%M")
 echo "branch/tag: $tag"
 echo "make options:" $arch_opts $make_opts $host_make_opts
-msg "Generating defconfig from \`make $defconfig\`..."
+msg "Generating defconfig from \`make $defconfig \ $defconfig_device\`..."
 if ! make O=out $arch_opts $make_opts $host_make_opts "$defconfig"; then
     err "Failed generating .config, make sure it is actually available in arch/${arch}/configs/ and is a valid defconfig file"
     exit 2
